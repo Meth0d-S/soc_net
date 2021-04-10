@@ -1,0 +1,27 @@
+.aside {
+    width: 20%;
+    background-color: #3ae6ca;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.list {
+    margin: 20px;
+    font-size: 24px;
+    list-style: none;
+    padding: 0;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.link.active {
+    color: gold;
+}
+
+.link:hover {
+    color: black;
+    transition: all .5s;
+}

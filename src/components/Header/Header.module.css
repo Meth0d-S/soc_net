@@ -1,0 +1,11 @@
+.header {
+    background-color: #3ae6ca;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+}
