@@ -1,0 +1,51 @@
+.messenger {
+  display: flex;
+}
+
+.dialogs {
+  margin: 20px;
+  width: 20%;
+  max-width: 200px;
+}
+
+.item {
+  font-size: 24px;
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.item.active {
+  color: gold;
+}
+
+.window {
+  background-color: #fff;
+  margin: 20px;
+  width: 80%;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.input {
+  display: block;
+  width: 95%;
+  height: 50px;
+  margin: 10px;
+  border-radius: 15px;
+  border-color: #ccc;
+  outline: none;
+  padding: 10px;
+}
+
+.button {
+  display: block;
+  margin-right: 15px;
+  margin-left: auto;
+  background-color: #3ae6ca;
+  padding: 0 30px;
+  border: none;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+}

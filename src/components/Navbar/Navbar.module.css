@@ -22,6 +22,6 @@
 }
 
 .link:hover {
-    color: black;
+    color: gold;
     transition: all .5s;
 }

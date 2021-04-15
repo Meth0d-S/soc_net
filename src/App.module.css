@@ -8,3 +8,10 @@
     display: flex;
     justify-content: space-between;
 }
+
+.content {
+    width: 80%;
+    background-color: #ccc;
+    border-radius: 15px;
+    padding-bottom: 50px;
+}

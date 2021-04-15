@@ -1,0 +1,15 @@
+.descr {
+    display: flex;
+}
+
+.avatar {
+    margin: 10px;
+    width: 25%;
+    border-radius: 15px;
+    display: block;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
