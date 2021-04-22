@@ -1,0 +1,22 @@
+.link {
+    text-decoration: none;
+    color: #fff;
+    margin: 20px;
+    font-size: 24px;
+}
+
+.link.active {
+    color: gold;
+}
+
+.link:hover {
+    color: gold;
+    transition: all .5s;
+}
+
+.friendsField {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

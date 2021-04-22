@@ -1,41 +1,19 @@
+import React from "react";
 import styles from './Messenger.module.css'
-import {NavLink} from "react-router-dom";
+import Message from "./Message/Message";
+import Dialog from "./Dialog/Dialog";
 
-const Dialog = (props) => {
-  return (
-      <NavLink to={'/messenger/' + props.id} className={styles.item} activeClassName={styles.active}>
-        {props.name}
-      </NavLink>
-  )
-}
+const Messenger = (props) => {
 
-const Message = (props) => {
-  return (
-    <p>
-      {props.text}
-    </p>
-  )
-}
+  const dialogsElements = props.state.dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
+  const messagesElements = props.state.messages.map(message => <Message text={message.text}/>)
 
-const Messenger = () => {
+  let textareaRefLink = React.createRef()
 
-  const dialogs = [
-    {name: 'Ada', id: '1'},
-    {name: 'Sam', id: '2'},
-    {name: 'Liam', id: '3'},
-    {name: 'Nox', id: '4'},
-    {name: 'Andrew', id: '5'},
-    {name: 'Bill', id: '6'}
-  ]
-
-  const messages = [
-    {text: 'Hello, how are you?', id: 1},
-    {text: 'I am fine', id: 1},
-    {text: 'Good buy', id: 1}
-  ]
-
-  const dialogsElements = dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
-  const messagesElements = messages.map(message => <Message text={message.text}/>)
+  let addMessage = () => {
+    let text = textareaRefLink.current.value
+    alert(text)
+  }
 
   return (
     <div className={styles.messenger}>
@@ -44,9 +22,9 @@ const Messenger = () => {
       </div>
       <div className={styles.window}>
         {messagesElements}
-        <form action="#">
-          <input className={styles.input} type="text"/>
-          <button className={styles.button} type='submit'>Send</button>
+        <form onSubmit={event => event.preventDefault()}>
+          <textarea ref={textareaRefLink} className={styles.textarea}/>
+          <button onClick={addMessage} className={styles.button} type='submit'>Send</button>
         </form>
       </div>
     </div>

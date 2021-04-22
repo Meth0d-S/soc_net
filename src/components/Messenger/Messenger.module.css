@@ -8,17 +8,6 @@
   max-width: 200px;
 }
 
-.item {
-  font-size: 24px;
-  display: block;
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.item.active {
-  color: gold;
-}
-
 .window {
   background-color: #fff;
   margin: 20px;
@@ -27,7 +16,7 @@
   padding: 25px;
 }
 
-.input {
+.textarea {
   display: block;
   width: 95%;
   height: 50px;
@@ -36,6 +25,7 @@
   border-color: #ccc;
   outline: none;
   padding: 10px;
+  resize: none;
 }
 
 .button {

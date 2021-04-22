@@ -1,24 +1,27 @@
+import React from "react";
 import styles from './Wall.module.css'
 import Post from "./Post/Post";
 
-const Wall = () => {
+const Wall = (props) => {
 
-  const posts = [
-    {text: 'Hi, how are you?', like: '123'},
-    {text: 'Silence...', like: '1'},
-    {text: 'Grow...', like: '1'},
-    {text: 'OH!', like: '1'},
-    {text: 'Get ready!', like: '1'},
-    {text: 'You soul is my', like: '1200'}
-  ]
+  const postsElements = props.posts.map(post => <Post text={post.text} like={post.like}/>)
 
-  const postsElements = posts.map(post => <Post text={post.text} like={post.like}/>)
+  let textareaRefLink = React.createRef()
+
+  let addPost = () => {
+    props.addPost()
+  }
+
+  let updatePost = () => {
+    let text = textareaRefLink.current.value
+    props.updateNewPostText(text)
+  }
 
   return (
     <div>
-      <form>
-        <input className={styles.input} type="text"/>
-        <button className={styles.button} type="submit">Send</button>
+      <form onSubmit={event => event.preventDefault()}>
+        <textarea onChange={updatePost} value={props.newPostText} ref={textareaRefLink} className={styles.textarea}/>
+        <button onClick={addPost} className={styles.button} type="submit">Send</button>
       </form>
       <div className="wall">
         {postsElements}

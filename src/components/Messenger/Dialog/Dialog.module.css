@@ -1,0 +1,15 @@
+.item {
+    font-size: 24px;
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all .5s;
+}
+
+.item:hover{
+    color: dodgerblue;
+}
+
+.item.active {
+    color: dodgerblue;
+}
