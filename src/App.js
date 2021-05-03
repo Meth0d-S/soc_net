@@ -16,8 +16,8 @@ function App(props) {
         <main className={styles.main}>
           <Navbar state={props.state.sidebar}/>
           <div className={styles.content}>
-            <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>}/>
-            <Route path='/messenger' render={() => <Messenger state={props.state.messengerPage}/>}/>
+            <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch}/>}/>
+            <Route path='/messenger' render={() => <Messenger messengerPage={props.state.messengerPage} dispatch={props.dispatch}/>}/>
             <Route path='/news' render={() => <News/>}/>
             <Route path='/music' render={() => <Music/>}/>
             <Route path='/settings' render={() => <Settings/>}/>

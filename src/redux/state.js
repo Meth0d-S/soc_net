@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_MESSAGE = 'ADD-MESSAGE'
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+
 let store = {
   _state: {
     profilePage: {
@@ -24,7 +29,8 @@ let store = {
         {text: 'Hello, how are you?', id: 1},
         {text: 'I am fine', id: 2},
         {text: 'Good buy', id: 3}
-      ]
+      ],
+      newMessageText: 'Wait!'
     },
     sidebar: {
       friends: [
@@ -37,29 +43,68 @@ let store = {
       ]
     }
   },
-  getState() {
-    return this._state
-  },
-  addPost() {
-    let newPost = {
-      id: 7,
-      text: this._state.profilePage.newPostText,
-      like: 0
-    }
-    this._state.profilePage.posts.push(newPost)
-    this._state.profilePage.newPostText = ''
-    this._rerenderEntireTree(this._state)
-  },
-  updateNewPostText(text) {
-    this._state.profilePage.newPostText = text
-    this._rerenderEntireTree(this._state)
-  },
-  _rerenderEntireTree() {
+  _callSubscriber() {
     console.log('state changed')
   },
   subscribe(observer) {
-    this._rerenderEntireTree = observer
+    this._callSubscriber = observer
+  },
+  getState() {
+    return this._state
+  },
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id: 7,
+        text: this._state.profilePage.newPostText,
+        like: 0
+      }
+      this._state.profilePage.posts.push(newPost)
+      this._state.profilePage.newPostText = ''
+      this._callSubscriber(this._state)
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.text
+      this._callSubscriber(this._state)
+    } else if (action.type === 'ADD-MESSAGE') {
+      let newMessage = {
+        text: this._state.messengerPage.newMessageText,
+        id: 4
+      }
+      this._state.messengerPage.messages.push(newMessage)
+      this._state.messengerPage.newMessageText = ''
+      this._callSubscriber(this._state)
+    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+      this._state.messengerPage.newMessageText = action.text
+      this._callSubscriber(this._state)
+    }
   }
 }
+
+export const addPostActionCreator = () => {
+  return {
+    type: ADD_POST
+  }
+}
+
+export const updatePostActionCreator = (text) => {
+  return {
+    type: UPDATE_NEW_POST_TEXT,
+    text: text
+  }
+}
+
+export const addMessageActionCreator = () => {
+  return {
+    type: ADD_MESSAGE
+  }
+}
+
+export const updateMessageActionCreator = (text) => {
+  return {
+    type: UPDATE_NEW_MESSAGE_TEXT,
+    text: text
+  }
+}
+
 
 export default store
