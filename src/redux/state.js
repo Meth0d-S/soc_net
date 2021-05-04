@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const ADD_MESSAGE = 'ADD-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+import profileReducer from "./profileReducer";
+import messengerReducer from "./messengerReducer";
+import sidebarReducer from "./sidebarReducer";
 
 let store = {
   _state: {
@@ -53,58 +52,11 @@ let store = {
     return this._state
   },
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
-      let newPost = {
-        id: 7,
-        text: this._state.profilePage.newPostText,
-        like: 0
-      }
-      this._state.profilePage.posts.push(newPost)
-      this._state.profilePage.newPostText = ''
-      this._callSubscriber(this._state)
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-      this._state.profilePage.newPostText = action.text
-      this._callSubscriber(this._state)
-    } else if (action.type === 'ADD-MESSAGE') {
-      let newMessage = {
-        text: this._state.messengerPage.newMessageText,
-        id: 4
-      }
-      this._state.messengerPage.messages.push(newMessage)
-      this._state.messengerPage.newMessageText = ''
-      this._callSubscriber(this._state)
-    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-      this._state.messengerPage.newMessageText = action.text
-      this._callSubscriber(this._state)
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.messengerPage = messengerReducer(this._state.messengerPage, action)
+    this._state.sidebar = sidebarReducer(this._state.profilePage, action)
+    this._callSubscriber(this._state)
   }
 }
-
-export const addPostActionCreator = () => {
-  return {
-    type: ADD_POST
-  }
-}
-
-export const updatePostActionCreator = (text) => {
-  return {
-    type: UPDATE_NEW_POST_TEXT,
-    text: text
-  }
-}
-
-export const addMessageActionCreator = () => {
-  return {
-    type: ADD_MESSAGE
-  }
-}
-
-export const updateMessageActionCreator = (text) => {
-  return {
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    text: text
-  }
-}
-
 
 export default store

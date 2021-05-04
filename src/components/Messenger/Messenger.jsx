@@ -2,7 +2,7 @@ import React from "react";
 import styles from './Messenger.module.css'
 import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
-import {addMessageActionCreator, updateMessageActionCreator} from "../../redux/state";
+import {addMessageActionCreator, updateMessageActionCreator} from "../../redux/messengerReducer";
 
 const Messenger = (props) => {
 
