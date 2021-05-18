@@ -19,19 +19,26 @@ const initialState = {
 }
 
 const messengerReducer = (state = initialState, action) => {
-
-  if (action.type === ADD_MESSAGE) {
-    let newMessage = {
-      text: state.newMessageText,
-      id: 4
+  switch (action.type) {
+    case ADD_MESSAGE: {
+      return  {
+        ...state,
+        messages: [
+          ...state.messages,
+          {text: state.newMessageText, id: 4}
+        ],
+        newMessageText: ''
+      }
     }
-    state.messages.push(newMessage)
-    state.newMessageText = ''
-  } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-    state.newMessageText = action.text
+    case UPDATE_NEW_MESSAGE_TEXT: {
+      return  {
+        ...state,
+        newMessageText: action.text
+      }
+    }
+    default:
+      return state
   }
-
-  return state
 }
 
 export const addMessageActionCreator = () => {

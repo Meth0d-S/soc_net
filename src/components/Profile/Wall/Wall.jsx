@@ -1,7 +1,6 @@
 import React from "react";
 import styles from './Wall.module.css'
 import Post from "./Post/Post";
-import {addPostActionCreator, updatePostActionCreator} from "../../../redux/profileReducer";
 
 const Wall = (props) => {
 
@@ -10,12 +9,12 @@ const Wall = (props) => {
   let textareaRefLink = React.createRef()
 
   let addPost = () => {
-    props.dispatch(addPostActionCreator())
+    props.addPost()
   }
 
   let updatePost = () => {
     let text = textareaRefLink.current.value
-    props.dispatch(updatePostActionCreator(text))
+    props.updatePost(text)
   }
 
   return (

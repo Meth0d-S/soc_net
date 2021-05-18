@@ -10,25 +10,31 @@ const initialState = {
     {id: 5, text: 'Get ready!', like: 1},
     {id: 6, text: 'You soul is my', like: 1200}
   ],
-    newPostText: 'Hey Yo!'
+  newPostText: 'Hey Yo!'
 }
 
 
 const profileReducer = (state = initialState, action) => {
-
-  if (action.type === ADD_POST) {
-    let newPost = {
-      id: 7,
-      text: state.newPostText,
-      like: 0
+  switch (action.type) {
+    case ADD_POST: {
+      return  {
+        ...state,
+        posts: [
+          {id: 7, text: state.newPostText, like: 0},
+          ...state.posts
+        ],
+        newPostText: ''
+      }
     }
-    state.posts.push(newPost)
-    state.newPostText = ''
-  } else if (action.type === UPDATE_NEW_POST_TEXT) {
-    state.newPostText = action.text
+    case UPDATE_NEW_POST_TEXT: {
+      return  {
+        ...state,
+        newPostText: action.text
+      }
+    }
+    default:
+      return state
   }
-
-  return state
 }
 
 export const addPostActionCreator = () => {

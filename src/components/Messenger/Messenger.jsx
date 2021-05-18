@@ -2,22 +2,21 @@ import React from "react";
 import styles from './Messenger.module.css'
 import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
-import {addMessageActionCreator, updateMessageActionCreator} from "../../redux/messengerReducer";
 
 const Messenger = (props) => {
 
-  const dialogsElements = props.messengerPage.dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
-  const messagesElements = props.messengerPage.messages.map(message => <Message text={message.text}/>)
+  const dialogsElements = props.dialogs.map(dialog => <Dialog name={dialog.name} id={dialog.id}/>)
+  const messagesElements = props.messages.map(message => <Message text={message.text}/>)
 
   let textareaRefLink = React.createRef()
 
   let addMessage = () => {
-    props.dispatch(addMessageActionCreator())
+    props.addMessage()
   }
 
   let updateMessage = () => {
     let text = textareaRefLink.current.value
-    props.dispatch(updateMessageActionCreator(text))
+    props.updateMessage(text)
   }
 
   return (
@@ -28,7 +27,7 @@ const Messenger = (props) => {
       <div className={styles.window}>
         {messagesElements}
         <form onSubmit={event => event.preventDefault()}>
-          <textarea ref={textareaRefLink} onChange={updateMessage} value={props.messengerPage.newMessageText} className={styles.textarea}/>
+          <textarea ref={textareaRefLink} onChange={updateMessage} value={props.newMessageText} className={styles.textarea}/>
           <button onClick={addMessage} className={styles.button} type='submit'>Send</button>
         </form>
       </div>
