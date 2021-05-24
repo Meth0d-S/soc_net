@@ -3,8 +3,14 @@ import styles from "./Users.module.css";
 import userPhoto from '../../assets/images/user.png'
 
 const Users = (props) => {
+
   let pagesCount = Math.ceil(props.totalCount / props.pageSize)
   let pages = []
+
+  // for (let i = 1; i <= pagesCount; i++) {
+  //   pages.push(i)
+  // }
+
   if (pagesCount > 10) {
     if (props.currentPage > 5) {
       for (let i = props.currentPage - 4; i <= props.currentPage + 5; i++) {
