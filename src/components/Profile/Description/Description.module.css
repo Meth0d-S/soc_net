@@ -1,5 +1,5 @@
-.descr {
-    display: flex;
+.name {
+    margin-left: 50px;
 }
 
 .avatar {
@@ -7,9 +7,16 @@
     width: 25%;
     border-radius: 15px;
     display: block;
+    float: left;
 }
 
 .list {
     list-style: none;
     padding: 0;
+}
+
+.jobHeader {
+    margin-top: 20px;
+    margin-left: 50px;
+    font-weight: bold;
 }

@@ -8,8 +8,8 @@ import Preloader from "../common/Preloader/Preloader";
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    this.props.toggleIsFetching(true)
     if (this.props.users.length === 0) {
+    this.props.toggleIsFetching(true)
       axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
         .then(response => {
           this.props.toggleIsFetching(false)
@@ -19,13 +19,9 @@ class UsersContainer extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.toggleIsFetching(false)
-  }
-
   onPageChanged = (currentPage) => {
-    this.props.setCurrentPage(currentPage)
     this.props.toggleIsFetching(true)
+    this.props.setCurrentPage(currentPage)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.pageSize}`)
       .then(response => {
         this.props.toggleIsFetching(false)
@@ -34,6 +30,7 @@ class UsersContainer extends React.Component {
   }
 
   render = () => {
+    debugger
     return <>
       {
         this.props.isFetching
@@ -42,7 +39,6 @@ class UsersContainer extends React.Component {
                  users={this.props.users} onPageChanged={this.onPageChanged} follow={this.props.follow}
                  unfollow={this.props.unfollow}/>
       }
-
     </>
   }
 }

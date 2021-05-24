@@ -1,13 +1,13 @@
 import styles from './App.module.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {BrowserRouter as Router, Route} from "react-router-dom";
 import MessengerContainer from "./components/Messenger/MessengerContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 function App(props) {
   return (
@@ -17,7 +17,7 @@ function App(props) {
         <main className={styles.main}>
           <Navbar/>
           <div className={styles.content}>
-            <Route path='/profile' render={() => <Profile/>}/>
+            <Route path='/profile' render={() => <ProfileContainer/>}/>
             <Route path='/messenger' render={() => <MessengerContainer />}/>
             <Route path='/news' render={() => <News/>}/>
             <Route path='/music' render={() => <Music/>}/>

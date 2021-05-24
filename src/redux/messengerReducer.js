@@ -19,7 +19,9 @@ const initialState = {
 }
 
 const messengerReducer = (state = initialState, action) => {
+
   switch (action.type) {
+
     case ADD_MESSAGE: {
       return  {
         ...state,
@@ -30,28 +32,25 @@ const messengerReducer = (state = initialState, action) => {
         newMessageText: ''
       }
     }
+
     case UPDATE_NEW_MESSAGE_TEXT: {
       return  {
         ...state,
         newMessageText: action.text
       }
     }
+
     default:
       return state
   }
 }
 
-export const addMessageActionCreator = () => {
-  return {
-    type: ADD_MESSAGE
-  }
-}
 
-export const updateMessageActionCreator = (text) => {
-  return {
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    text: text
-  }
-}
+//ActionCreators
+
+export const addMessage = () => ({type: ADD_MESSAGE})
+
+export const updateMessage = text => ({type: UPDATE_NEW_MESSAGE_TEXT, text})
+
 
 export default messengerReducer
