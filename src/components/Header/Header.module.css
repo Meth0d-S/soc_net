@@ -2,10 +2,20 @@
     background-color: #3ae6ca;
     border-radius: 15px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
     height: 50px;
     width: 50px;
     margin: 10px;
+}
+
+.login {
+    color: white;
+    text-decoration: none;
+    margin-right: 25px;
+    font-size: 24px;
 }
