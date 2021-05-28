@@ -13,12 +13,12 @@ const Users = (props) => {
     if (props.currentPage > 5) {
       for (let i = props.currentPage - 4; i <= props.currentPage + 5; i++) {
         pages.push(i)
-        if (i == pagesCount) break
+        if (i === pagesCount) break
       }
     } else {
       for (let i = 1; i <= 10; i++) {
         pages.push(i)
-        if (i == pagesCount) break
+        if (i === pagesCount) break
       }
     }
   } else {
@@ -45,23 +45,9 @@ const Users = (props) => {
 
             {user.followed
 
-              ? <button disabled={props.followingIsInProgress.some(id => id === user.id)} onClick={() => {
-                props.toggleFollowingIsInProgress(true, user.id)
-                usersAPI.unfollow(user.id)
-                  .then(data => {
-                    if (data.resultCode === 0) props.unfollow(user.id)
-                    props.toggleFollowingIsInProgress(false, user.id)
-                  })
-              }} className={styles.followButton}>Unfollow</button>
+              ? <button disabled={props.followingIsInProgress.some(id => id === user.id)} onClick={() => {props.unfollow(user.id)}} className={styles.followButton}>Unfollow</button>
 
-              : <button disabled={props.followingIsInProgress.some(id => id === user.id)} onClick={() => {
-                props.toggleFollowingIsInProgress(true, user.id)
-                usersAPI.follow(user.id)
-                  .then(data => {
-                    if (data.resultCode === 0) props.follow(user.id)
-                    props.toggleFollowingIsInProgress(false, user.id)
-                  })
-              }} className={styles.followButton}>Follow</button>}
+              : <button disabled={props.followingIsInProgress.some(id => id === user.id)} onClick={() => {props.follow(user.id)}} className={styles.followButton}>Follow</button>}
 
           </div>
           <div>
