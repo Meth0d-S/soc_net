@@ -1,8 +1,11 @@
 import styles from './Profile.module.css'
 import Description from "./Description/Description";
 import WallContainer from "./Wall/WallContainer";
+import { Redirect } from "react-router-dom"
 
 const Profile = (props) => {
+
+  if (!props.isAuth) return <Redirect to='/login'/>
 
   return (
     <div>

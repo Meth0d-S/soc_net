@@ -18,7 +18,8 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = state => ({
-  user: state.profilePage.user
+  user: state.profilePage.user,
+  isAuth: state.auth.isAuth
 })
 
 let ProfileContainerWithRouter = withRouter(ProfileContainer)
