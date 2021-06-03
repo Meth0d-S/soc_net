@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import Login from "./components/Login/Login";
 import MessengerContainer from "./components/Messenger/MessengerContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -23,6 +24,7 @@ function App(props) {
             <Route path='/music' render={() => <Music/>}/>
             <Route path='/settings' render={() => <Settings/>}/>
             <Route path='/users' render={() => <UsersContainer/>}/>
+            <Route path='/login' render={() => <Login/>}/>
           </div>
         </main>
         <footer className="footer">

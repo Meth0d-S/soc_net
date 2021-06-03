@@ -2,7 +2,6 @@ import React from "react";
 import styles from './Messenger.module.css'
 import Message from "./Message/Message";
 import Dialog from "./Dialog/Dialog";
-import {Redirect} from "react-router-dom";
 
 const Messenger = (props) => {
 
@@ -19,8 +18,6 @@ const Messenger = (props) => {
     let text = textareaRefLink.current.value
     props.updateMessage(text)
   }
-
-  if (!props.isAuth) return <Redirect to='/login'/>
 
   return (
     <div className={styles.messenger}>

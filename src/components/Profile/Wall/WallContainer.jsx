@@ -1,4 +1,3 @@
-import React from "react";
 import Wall from "./Wall";
 import {addPost, updatePost} from "../../../redux/profileReducer";
 import {connect} from "react-redux";

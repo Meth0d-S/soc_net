@@ -1,22 +1,19 @@
 import React from "react";
 import Messenger from "./Messenger";
 import {addMessage, updateMessage} from "../../redux/messengerReducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {connect} from "react-redux";
+import {compose} from "redux";
 
 const mapStateToProps = (state) => {
   return {
     dialogs: state.messengerPage.dialogs,
     messages: state.messengerPage.messages,
     newMessageText: state.messengerPage.newMessageText,
-    isAuth: state.auth.isAuth
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addMessage: () => dispatch(addMessageActionCreator()),
-//     updateMessage: (text) => dispatch(updateMessageActionCreator(text))
-//   }
-// }
-
-export default connect(mapStateToProps, {addMessage, updateMessage})(Messenger)
+export default compose(
+  connect(mapStateToProps, {addMessage, updateMessage}),
+  withAuthRedirect
+)(Messenger)
