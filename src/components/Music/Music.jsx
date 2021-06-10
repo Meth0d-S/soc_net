@@ -1,5 +1,3 @@
-import styles from './Music.module'
-
 const Music = () => {
   return (
     <div>

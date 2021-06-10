@@ -18,4 +18,14 @@
     text-decoration: none;
     margin-right: 25px;
     font-size: 24px;
+    display: block;
+}
+
+.logout {
+    color: #d89595;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    cursor: pointer;
 }

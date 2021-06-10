@@ -1,6 +1,6 @@
 import {authAPI} from "../api/api";
 
-const SET_USER ='SET-USER'
+const SET_USER = 'SET-USER'
 
 let initialState = {
   id: null,
@@ -17,8 +17,7 @@ const authReducer = (state = initialState, action) => {
     case SET_USER:
       return {
         ...state,
-        ...action.data,
-        isAuth: true
+        ...action.data
       }
     default:
       return state
@@ -29,7 +28,7 @@ const authReducer = (state = initialState, action) => {
 
 //ActionCreators
 
-export const setUser = (id, email, login) => ({type: SET_USER, data: {id, email, login}})
+export const setUser = (id, email, login, isAuth) => ({type: SET_USER, data: {id, email, login, isAuth}})
 
 
 //ThunkCreators
@@ -39,9 +38,28 @@ export const getUser = () => dispatch => {
     .then(data => {
       let {id, email, login} = data.data
       if (data.resultCode === 0) {
-        dispatch(setUser(id, email, login))
+        dispatch(setUser(id, email, login, true))
       }
     })
+}
+
+export const login = (email, password, rememberMe) => dispatch => {
+  authAPI.login(email, password, rememberMe)
+    .then(data => {
+      if (data.resultCode === 0) {
+        dispatch(getUser())
+      }
+    })
+}
+
+export const logout = () => dispatch => {
+  authAPI.logout()
+    .then(data => {
+        if (data.resultCode === 0) {
+          dispatch(setUser(null, null, null, false))
+        }
+      }
+    )
 }
 
 

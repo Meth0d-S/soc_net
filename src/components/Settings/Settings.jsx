@@ -1,5 +1,3 @@
-import styles from './Settings.module'
-
 const Settings = () => {
   return (
     <div>

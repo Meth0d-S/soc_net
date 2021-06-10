@@ -18,8 +18,8 @@ const Description = (props) => {
         </h3>
         <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
         {props.user.photos.large
-          ? <img className={styles.avatar} src={props.user.photos.large}/>
-          : <img className={styles.avatar} src={user}/>}
+          ? <img className={styles.avatar} src={props.user.photos.large} alt='avatar'/>
+          : <img className={styles.avatar} src={user} alt='avatar'/>}
         <div className="descr">
           <p>About Me: {props.user.aboutMe}</p>
           <p>Contacts:</p>

@@ -1,0 +1,8 @@
+.borderError {
+  border: 2px solid darkred;
+}
+
+.spanError {
+  color: darkred;
+  margin-left: 20px;
+}

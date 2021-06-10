@@ -1,5 +1,3 @@
-import styles from './News.module'
-
 const News = () => {
   return (
     <div>
